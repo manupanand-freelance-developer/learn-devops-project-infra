@@ -2,7 +2,7 @@ name: Infrastructure provisioning pipeline
 on: [workflow_dispatch]
 jobs: 
   DEV: 
-    runs-on: aws-runner
+    runs-on: self-hosted
     steps: 
       - run: echo test
      
