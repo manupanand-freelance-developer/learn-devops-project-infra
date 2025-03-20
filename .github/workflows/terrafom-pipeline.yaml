@@ -12,5 +12,5 @@ jobs:
           ls -la
           cd tools-infra; cd terraform
           ls -la
-          terraform init  ; teraform apply -auto-approve
+          terraform init  ; terraform apply -auto-approve
      
