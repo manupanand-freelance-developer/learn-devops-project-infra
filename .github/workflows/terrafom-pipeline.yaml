@@ -20,7 +20,7 @@ jobs:
           token: ${{secrets.VAULT_TOKEN}}
           tlsSkipVerify: true  #add to runner later /usr/local/share/ca-certificates/vault-ca.crt
           secrets: | 
-            tools/kv/data/aws aws_user | AWS_USER;
+            tools/data/aws aws_user | AWS_USER;
       - name: AWS user 
         run:  echo "${{env.AWS_USER}}"
      
