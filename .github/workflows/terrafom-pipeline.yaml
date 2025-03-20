@@ -4,12 +4,18 @@ on:
 jobs: 
   DEV: 
     runs-on: X64
+    uses: actions/checkout@v4
+    with: 
+      sparse-chekout: |
+        ansible
+        terraform
+      
     steps: 
       - run: echo test
         name: run terraform 
       - run: |
           ls -la
-          cd ..
+          cd terraform
           ls -la
           terraform init  
      
