@@ -4,5 +4,6 @@ on:
 jobs: 
   DEV: 
     runs-on: aws-runner
-    run: echo test ok
+    steps: 
+      - run: echo test
      
