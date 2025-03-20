@@ -4,6 +4,13 @@ variable "domain-name" {
 variable "route53-zoneid" {
   default = "x"
 }
-output "new" {
-  value = var.domain-name
+variable "tools" {
+  default = {
+    github-runner={
+
+    }
+    workstation={
+        
+    }
+  }
 }
