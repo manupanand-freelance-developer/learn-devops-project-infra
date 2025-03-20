@@ -1,5 +1,6 @@
 name: Infrastructure provisioning pipeline 
-on: [workflow_dispatch]
+on: 
+  workflow_dispatch:
 jobs: 
   DEV: 
     runs-on: self-hosted
