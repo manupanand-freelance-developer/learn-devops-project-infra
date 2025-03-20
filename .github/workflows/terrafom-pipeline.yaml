@@ -9,5 +9,7 @@ jobs:
         name: run terraform 
       - run: |
           ls -la
+          cd ..
+          ls -la
           terraform init  
      
