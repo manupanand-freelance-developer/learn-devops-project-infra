@@ -1,0 +1,8 @@
+name: Infrastructure provisioning pipeline 
+on: 
+  workflow_dispatch: 
+jobs: 
+  DEV: 
+    runs-on: aws-runner
+    run: echo test ok
+     
