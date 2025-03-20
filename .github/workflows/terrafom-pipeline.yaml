@@ -13,6 +13,13 @@ jobs:
           cd tools-infra; cd terraform
           ls -la
           terraform init  ; terraform apply -auto-approve
-          cd .. ; cd ..;rm -rf tools-infra
-          ls -la ; 
+      - name: Import secrets hashicorp 
+        uses: hashicorp/vault-action@v2.4.0
+        with: 
+          url: ${{secrets.VAULT_SERVER}}
+          token: ${{secrets.VAULT_TOKEN}}
+          secrets: | 
+            secret/data/tools/aws aws_user | AWS_USER;
+      - name: AWS user 
+        run:  echo "${{env.AWS_USER}}"
      
