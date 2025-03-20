@@ -3,14 +3,13 @@ on:
   workflow_dispatch:
 jobs: 
   DEV: 
-    runs-on: X64
-    uses: actions/checkout@v4
-    with: 
-      sparse-chekout: |
-        ansible
-        terraform
-      
+    runs-on: X64    
     steps: 
+      - uses: actions/checkout@v4
+        with: 
+          sparse-chekout: |
+            ansible
+            terraform
       - run: echo test
         name: run terraform 
       - run: |
