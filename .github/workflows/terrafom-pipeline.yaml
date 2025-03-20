@@ -6,15 +6,11 @@ jobs:
     runs-on: X64    
     steps: 
       - uses: actions/checkout@v4
-        with: 
-          sparse-chekout: |
-            ansible
-            terraform
       - run: echo test
         name: run terraform 
       - run: |
           ls -la
-          cd terraform
+          cd tools-infra; cd terraform
           ls -la
           terraform init  
      
