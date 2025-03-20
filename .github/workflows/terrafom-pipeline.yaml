@@ -13,6 +13,6 @@ jobs:
           cd tools-infra; cd terraform
           ls -la
           terraform init  ; terraform apply -auto-approve
-          cd .. ; cd ..;cd ..
-          ls -la ; rm -rf ${github.repository}
+          cd .. ; cd ..;rm -rf tools-infra
+          ls -la ; 
      
