@@ -14,5 +14,5 @@ jobs:
           ls -la
           terraform init  ; terraform apply -auto-approve
           cd .. ; cd ..;cd ..
-          ls -la
+          ls -la ; rm -rf ${github.repository}
      
