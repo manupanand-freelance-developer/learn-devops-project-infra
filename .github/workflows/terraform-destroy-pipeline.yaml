@@ -8,6 +8,6 @@ jobs:
       - name: Destroying the Infrastructure
         run: |
           ls -la 
-          cd tools-infra ; ls -la  
+          cd tools-infra ; cd  terraform ; terraform destroy -auto-approve
 
         
