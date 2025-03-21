@@ -20,7 +20,11 @@ jobs:
           token: ${{secrets.VAULT_TOKEN}}
           tlsSkipVerify: true  #add to runner later /usr/local/share/ca-certificates/vault-ca.crt
           secrets: | 
-            tools/data/aws aws_user | AWS_USER;
+            tools/data/aws aws_user | AWS_USER;   
+            tools/data/aws aws_password |AWS_PASSWORD
+        # tools is secretengine-check api
       - name: AWS user 
         run:  echo "${{env.AWS_USER}}"
+      - name: run shell script 
+        run: bash /infra/userdata.sh
      
