@@ -8,5 +8,7 @@ module "infra" {
     volume_size         =   each.value["volume_size"]
     policy_name         =   each.value["policy_name"]
     ports               =   each.value["ports"]
+    aws_user            =   var.aws_user
+    aws_password        =   var.aws_password 
 }
  
