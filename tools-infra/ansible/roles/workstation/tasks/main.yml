@@ -1,6 +1,6 @@
 - name: Setting up Prompt
   ansible.builtin.lineinfile: 
-    path:  "/hom/ec2-user/.bashrc"
+    path:  "/home/ec2-user/.bashrc"
     line: 'export PS1="\[\e[1;31m\]\u\[\e[0m\]@\[\e[1;34m\]{{role_name}}\[\e[0m\] \w \$ "'
     create: yes 
     mode: '0644'
@@ -12,8 +12,7 @@
     executable: /bin/bash     
 
 - name: Install amzon ssm 
-  ansible.builtin.shell: | 
-    yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_arm64/amazon-ssm-agent.rpm
+  ansible.builtin.rpm: https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_arm64/amazon-ssm-agent.rpm
 
 # also attach awsssmmanagedinstancecore iam role
 
@@ -34,13 +33,13 @@
     dest: /etc/yum.repos.d/hashicorp.repo
 
 - name: Install terraform 
-  ansible.buitlin.dnf: 
+  ansible.builtin.dnf: 
      name: terraform
      state: installed 
 
 
 - name: Intal gh-cli
-  ansible.builtin.dnf: https://github.com/cli/cli/releases/download/v2.68.1/gh_2.68.1_linux_arm64.rpm 
+  ansible.builtin.rpm: https://github.com/cli/cli/releases/download/v2.68.1/gh_2.68.1_linux_arm64.rpm 
 
 
 - name: Install docker 
@@ -65,10 +64,11 @@
     src: https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_Linux_arm64.tar.gz
     dest: /usr/local/bin/eksctl
     mode: '0755'
+    remote_src: yes
   
 
 - name: Install K9s
-  ansible.builtin.dnf : https://github.com/derailed/k9s/releases/download/v0.40.10/k9s_linux_arm64.rpm
+  ansible.builtin.rpm : https://github.com/derailed/k9s/releases/download/v0.40.10/k9s_linux_arm64.rpm
 
 # sudo dnf install https://github.com/derailed/k9s/releases/download/v0.40.10/k9s_linux_arm64.rpm
 
