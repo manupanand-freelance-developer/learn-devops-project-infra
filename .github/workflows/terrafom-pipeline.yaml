@@ -24,7 +24,7 @@ jobs:
             tools/data/aws aws_password |AWS_PASSWORD
         # tools is secretengine-check api
       - name: AWS user 
-        run:  echo "${{env.AWS_USER}}"
+        run:  echo "${{env.AWS_USER}}" ; ls -la
       - name: run shell script 
         run: bash /infra/userdata.sh
      
