@@ -54,7 +54,7 @@ resource "aws_security_group" "instance-sg" {
   }
 #   #dynamic port allocation
     dynamic "ingress" {
-      for_each  =  each.value.ports
+      for_each  =  each.value["ports"]
       content {
         from_port    = ingress.value
         to_port      = ingress.value 
