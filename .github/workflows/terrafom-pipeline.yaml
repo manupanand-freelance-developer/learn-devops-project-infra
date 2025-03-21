@@ -27,5 +27,5 @@ jobs:
       - name: AWS user 
         run:  echo "${{env.AWS_USER}}" ; ls -la
       - name: run shell script 
-        run: bash /infra/userdata.sh
+        run:  bash /tools-infra/terraform/infra/userdata.sh
      
