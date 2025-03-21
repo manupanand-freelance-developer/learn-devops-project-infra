@@ -11,7 +11,7 @@ resource "aws_instance" "instance" {
   # provide  execution commads -user data
   user_data          = base64encode(templatefile("${path.module}/userdata.sh",{
     AWS_USER         = var.aws_user
-    aws_password     = var.aws_password
+    AWS_PASSWORD     = var.aws_password
   }))
   tags={
     Name="${var.name}-server"
