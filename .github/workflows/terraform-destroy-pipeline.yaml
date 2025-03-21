@@ -1,0 +1,7 @@
+name: Infrastructure destroy pipeline
+on: [workflow_dispatch]
+jobs:
+  DEV: 
+    runs-on: X86 
+    steps: 
+      - run : echo destroy
