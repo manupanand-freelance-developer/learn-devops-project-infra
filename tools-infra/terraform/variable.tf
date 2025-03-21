@@ -24,7 +24,7 @@ variable "tools" {
     # }
     test-server={
         instance_type="t4g.small"
-        ports={test=443}
+        ports={https=443}
         policy_name=["AmazonEC2FullAccess","AmazonSSMFullAccess"]
         volume_size= 10  
         create_dns= true 
