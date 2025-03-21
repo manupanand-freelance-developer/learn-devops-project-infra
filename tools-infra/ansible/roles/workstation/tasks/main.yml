@@ -18,7 +18,7 @@
 
 - name: Install Ansible 
   ansible.builtin.dnf: 
-     name: ansible-core.aarch64
+     name: ansible-core
      state: installed 
 
 - name: Install utils and dependencies 
@@ -44,13 +44,14 @@
 
 - name: Install docker 
   ansible.builtin.dnf: 
-     name: docker.aarch64
+     name: docker
      state: installed
 
 - name: Start docker service 
   ansible.builtin.systemd_service:
+     name: docker
      state: restarted 
-  enabled: true
+     enabled: true
 
 - name: Download Kubectl 
   ansible.builtin.get_url: 
