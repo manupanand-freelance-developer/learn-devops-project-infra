@@ -4,6 +4,7 @@ export AWS_USER=$TF_VAR_aws_user
 export AWS_PASSWORD=$TF_VAR_aws_password
 echo "AWS_USER is set to: $AWS_USER" | tee -a /var/log/user_data.log
 echo "AWS_PASSWORD is set to: $AWS_PASSWORD" | tee -a /var/log/user_data.log
+echo $role_name | tee -a /var/log/user_data.log
 
 # Set the password for the user "ec2-user" or any user you have
 echo "${AWS_USER}:${AWS_PASSWORD}" | sudo chpasswd   2>&1 | tee -a /var/log/user_data.log
@@ -25,4 +26,4 @@ sudo systemctl restart sshd
 sudo dnf install -y ansible-core  2>&1 | tee -a /var/log/user_data.log
 
 # install setup 
-ansible-pull -i localhost, -U https://github.com/manupanand-freelance-developer/learn-devops-project-infra  tools-infra/ansible/playbook.yaml  -e ansible_user=${AWS_USER}-e ansible_password=${AWS_PASSWORD}"-e role_name=${role_name} 2>&1 | tee -a /var/log/user_data.log
+ansible-pull -i localhost, -U https://github.com/manupanand-freelance-developer/learn-devops-project-infra  tools-infra/ansible/playbook.yaml  -e ansible_user=${AWS_USER} -e ansible_password=${AWS_PASSWORD} -e role_name=${role_name} 2>&1 | tee -a /var/log/user_data.log
