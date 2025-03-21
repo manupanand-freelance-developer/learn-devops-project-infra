@@ -1,6 +1,6 @@
 #create iam role
-resource "aws_instace" "instance" {
-  name               =  "${var.name}-server"
+resource "aws_instance" "instance" {
+ 
   instance_type      =  var.instance_type 
   ami                =  var.ami_id
   # instance option

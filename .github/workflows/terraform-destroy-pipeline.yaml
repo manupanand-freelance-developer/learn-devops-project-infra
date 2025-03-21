@@ -6,8 +6,9 @@ jobs:
     runs-on: X64
     steps: 
       - name: Destroying the Infrastructure
-        uses:  actions/checkout@v4 
-        run:  echo destroy
+        run: echo destroy
+        # uses:  actions/checkout@v4 
+        # run:  echo destroy
 
           # cd tools-infra ;cd terraform 
           # terraform destroy -auto-approve
