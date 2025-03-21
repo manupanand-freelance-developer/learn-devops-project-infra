@@ -1,6 +1,6 @@
 #create aws instance
 resource "aws_instance" "instance" {
-  depends_on = [ aws_security_group.instance-sg ]
+  depends_on = [ aws_security_group.instance-sg, aws_iam_instance_profile.iam-instnace-profile ]
  
   instance_type             =  var.instance_type 
   ami                       =  var.ami_id
