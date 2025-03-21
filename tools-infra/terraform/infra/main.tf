@@ -53,17 +53,17 @@ resource "aws_security_group" "instance-sg" {
     
   }
 #   #dynamic port allocation
-#     dynamic "ingress" {
-#       for_each  =  each.value.ports
-#       content {
-#         from_port    = ingress.value
-#         to_port      = ingress.value 
-#         protocol     = "TCP"
-#         cidr_blocks  = ["0.0.0.0/0"]
-#         description  = ingress.key 
-#       }
+    dynamic "ingress" {
+      for_each  =  each.value.ports
+      content {
+        from_port    = ingress.value
+        to_port      = ingress.value 
+        protocol     = "TCP"
+        cidr_blocks  = ["0.0.0.0/0"]
+        description  = ingress.key 
+      }
       
-#     }
+    }
 }
 
 
@@ -71,7 +71,7 @@ resource "aws_security_group" "instance-sg" {
 # create route53
 # public dns
  resource "aws_route53_record" "public-dns" {
-    count   = var.create_dns ? 1 : 0
+    # count   = var.create_dns ? 1 : 0
     name    = "${var.name}.${var.domain-name}"
     type    = "A"
     ttl     = 25 
@@ -80,7 +80,7 @@ resource "aws_security_group" "instance-sg" {
   }
 # private dns
  resource "aws_route53_record" "private-dns" {
-    count   = var.create_dns ? 1 : 0
+    # count   = var.create_dns ? 1 : 0
     name    = "${var.name}.private.${var.domain-name}"
     type    = "A"
     ttl     = 25 
