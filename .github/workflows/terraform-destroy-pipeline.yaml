@@ -1,5 +1,6 @@
 name: Infrastructure destroy pipeline
-on: [workflow_dispatch]
+on: 
+  workflow_dispatch:
 jobs:
   DEV: 
     runs-on: X64
