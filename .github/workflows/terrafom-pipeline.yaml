@@ -4,15 +4,7 @@ on:
 jobs: 
   DEV: 
     runs-on: X64    
-    steps: 
-      - uses: actions/checkout@v4
-      - run: echo test
-        name: run terraform 
-      - run: |
-          ls -la
-          cd tools-infra; cd terraform
-          ls -la
-          terraform init  ; terraform apply -auto-approve
+    steps:
       - name: Import secrets hashicorp 
         uses: hashicorp/vault-action@v2.4.0
         with: 
@@ -22,7 +14,16 @@ jobs:
           secrets: | 
             tools/data/aws aws_user | AWS_USER;   
             tools/data/aws aws_password |AWS_PASSWORD
-        # tools is secretengine-check api
+        # tools is secretengine-check api 
+      - uses: actions/checkout@v4
+      - run: echo test
+        name: run terraform 
+      - run: |
+          ls -la
+          cd tools-infra; cd terraform
+          ls -la
+          terraform init  ; terraform apply -auto-approve
+      
       - name: AWS user 
         run:  echo "${{env.AWS_USER}}" ; ls -la
       - name: run shell script 
