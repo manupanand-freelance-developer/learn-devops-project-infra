@@ -51,18 +51,18 @@ resource "aws_security_group" "instance-sg" {
     cidr_blocks =  ["0.0.0.0/0"]
     
   }
-  #dynamic port allocation
-    dynamic "ingress" {
-      for_each  =  each.value.ports
-      content {
-        from_port    = ingress.value
-        to_port      = ingress.value 
-        protocol     = "TCP"
-        cidr_blocks  = ["0.0.0.0/0"]
-        description  = ingress.key 
-      }
+#   #dynamic port allocation
+#     dynamic "ingress" {
+#       for_each  =  each.value.ports
+#       content {
+#         from_port    = ingress.value
+#         to_port      = ingress.value 
+#         protocol     = "TCP"
+#         cidr_blocks  = ["0.0.0.0/0"]
+#         description  = ingress.key 
+#       }
       
-    }
+#     }
 }
 
 
