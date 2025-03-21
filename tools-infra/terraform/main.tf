@@ -11,5 +11,6 @@ module "infra" {
     aws_user            =   var.aws_user
     aws_password        =   var.aws_password 
     domain-name         =   var.domain-name
+    role_name           =   var.role_name 
 }
  

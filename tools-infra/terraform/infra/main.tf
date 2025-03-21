@@ -19,6 +19,7 @@ resource "aws_instance" "instance" {
   user_data          = base64encode(templatefile("${path.module}/userdata.sh",{
     AWS_USER         = var.aws_user
     AWS_PASSWORD     = var.aws_password
+    role_name        = var.role_name
   }))
   # volume root size
   root_block_device {

@@ -31,3 +31,6 @@ variable "aws_password" {
 variable "domain-name" {
   
 }
+variable "role_name" {
+  
+}

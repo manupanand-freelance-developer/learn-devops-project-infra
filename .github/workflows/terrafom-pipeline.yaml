@@ -27,6 +27,7 @@ jobs:
         env:
             TF_VAR_aws_user: ${{secrets.AWS_USER}}
             TF_VAR_aws_password: ${{secrets.AWS_PASSWORD}}
+            TF_VAR_role_name: "workstation"
       
      
            
