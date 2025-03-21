@@ -2,6 +2,10 @@ name: Infrastructure destroy pipeline
 on: [workflow_dispatch]
 jobs:
   DEV: 
-    runs-on: X86 
+    runs-on: X64
     steps: 
-      - run : echo destroy
+      - name: Destroying the Infrastructure
+        uses:  actions/checkout@v4 
+        run: | 
+          cd tools-infra ;cd terraform 
+          terraform destroy -auto-approve
