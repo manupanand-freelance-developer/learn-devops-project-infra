@@ -52,7 +52,7 @@ resource "aws_security_group" "instance-sg" {
     cidr_blocks =  ["0.0.0.0/0"]
     
   }
-  
+
 #   #dynamic port allocation
     # dynamic "ingress" {
     #   for_each  =  each.value["ports"]
@@ -76,7 +76,7 @@ resource "aws_security_group" "instance-sg" {
     name    = "${var.name}.${var.domain-name}"
     type    = "A"
     ttl     = 25 
-    records = [aws_instance.instance[each.key].public_ip]
+    records = [aws_instance.instance.public_ip]
     zone_id = data.aws_route53_zone.zone_id
   }
 # private dns
@@ -85,6 +85,6 @@ resource "aws_security_group" "instance-sg" {
     name    = "${var.name}.private.${var.domain-name}"
     type    = "A"
     ttl     = 25 
-    records = [aws_instance.instance[each.key].private_ip]
+    records = [aws_instance.instance.private_ip]
     zone_id = data.aws_route53_zone.zone_id
   }
