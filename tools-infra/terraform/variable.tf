@@ -23,7 +23,7 @@ variable "tools" {
     #     create_iam_role=true
     # }
     test-server={
-        instance_type="t4g.small"
+        instance_type="t4g.small"  #c7g.xlarge  t4g.xlarge
         ports={https=443}
         policy_name=["AmazonEC2FullAccess","AmazonSSMFullAccess"]
         volume_size= 10  
