@@ -25,12 +25,12 @@ resource "aws_iam_role" "iam-role" {
 resource "aws_iam_instance_profile" "iam-instnace-profile" {
     # count   = var.create_iam_role ? 1 : 0
     name    = "${var.name}-iam-instance-policy"
-    role    = aws_iam_role.iam-role[0].name 
+    role    = aws_iam_role.iam-role.name 
 }
 # attach other iam policies if needed
 resource "aws_iam_policy_attachment" "iam-policy-attach" {
     count   =  length(var.policy_name) 
     name    = "${var.name}-iam-policy-attachment-${var.policy_name[count.index]}"
-    roles = [aws_iam_role.iam-role[0].name]
+    roles = [aws_iam_role.iam-role.name]
     policy_arn = "arn:aws:iam::aws:policy/${var.policy_name[count.index]}"
 }
