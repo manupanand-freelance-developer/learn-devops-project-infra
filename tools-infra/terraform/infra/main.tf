@@ -77,7 +77,7 @@ resource "aws_security_group" "instance-sg" {
     type    = "A"
     ttl     = 25 
     records = [aws_instance.instance.public_ip]
-    zone_id = data.aws_route53_zone.zone_id
+    zone_id = data.aws_route53_zone.zone_id.id
   }
 # private dns
  resource "aws_route53_record" "private-dns" {
@@ -86,5 +86,5 @@ resource "aws_security_group" "instance-sg" {
     type    = "A"
     ttl     = 25 
     records = [aws_instance.instance.private_ip]
-    zone_id = data.aws_route53_zone.zone_id
+    zone_id = data.aws_route53_zone.zone_id.id
   }
