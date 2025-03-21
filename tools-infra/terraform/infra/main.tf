@@ -9,7 +9,7 @@ resource "aws_instance" "instance" {
 
   }
   # provide  execution commads -user data
-  user_data          = base64encode(templatefile("${path.module}/userdata.sh"))
+  user_data          = base64encode(templatefile("${path.module}/userdata.sh",{}))
   tags={
     Name="${var.name}-server"
   }
