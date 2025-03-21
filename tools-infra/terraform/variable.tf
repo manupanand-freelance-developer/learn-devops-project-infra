@@ -22,7 +22,7 @@ variable "tools" {
     #     create_dns= true 
     #     create_iam_role=true
     # }
-    test-server={
+    test={
         instance_type="t4g.small"  #c7g.xlarge  t4g.xlarge
         ports={https=443}
         policy_name=["AmazonEC2FullAccess","AmazonSSMFullAccess"]
