@@ -7,6 +7,7 @@ jobs:
     steps: 
       - name: Destroying the Infrastructure
         uses:  actions/checkout@v4 
-        run: | 
-          cd tools-infra ;cd terraform 
-          terraform destroy -auto-approve
+        run:  echo destroy
+
+          # cd tools-infra ;cd terraform 
+          # terraform destroy -auto-approve
