@@ -1,4 +1,4 @@
-#create iam role
+#create aws instance
 resource "aws_instance" "instance" {
  
   instance_type      =  var.instance_type 
@@ -9,7 +9,10 @@ resource "aws_instance" "instance" {
 
   }
   # provide  execution commads -user data
-  user_data          = base64encode(templatefile("${path.module}/userdata.sh",{}))
+  user_data          = base64encode(templatefile("${path.module}/userdata.sh",{
+    AWS_USER         = var.aws_user
+    aws_password     = var.aws_password
+  }))
   tags={
     Name="${var.name}-server"
   }

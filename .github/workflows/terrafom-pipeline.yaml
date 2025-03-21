@@ -14,22 +14,21 @@ jobs:
           secrets: | 
             tools/data/aws aws_user | AWS_USER;   
             tools/data/aws aws_password |AWS_PASSWORD
+         #   # tools/data/aws vault_token |VAULT_TOKEN
         # tools is secretengine-check api 
       - uses: actions/checkout@v4
-      - run: echo test
-        name: run terraform 
-      - run: |
-          ls -la
+      - name: run terraform 
+      # export TF_VAR_vault_token=${{secrets.VAULT_TOKEN}}
+        run: |
+          chmod +x tools-infra/terraform/infra/userdata.sh
           cd tools-infra; cd terraform
-          ls -la
           terraform init  ; terraform apply -auto-approve
+        env:
+            TF_VAR_aws_user: ${{secrets.AWS_USER}}
+            TF_VAR_aws_password: ${{secrets.AWS_PASSWORD}}
       
-      - name: AWS user 
-        run:  echo "${{env.AWS_USER}}" ; ls -la
-      - name: run shell script 
-        run:  |
-           chmod +x tools-infra/terraform/infra/userdata.sh
-           ls -la ./tools-infra/terraform/infra/
-           ./tools-infra/terraform/infra/userdata.sh
-
+     
+           
+          
+           
      
