@@ -26,4 +26,4 @@ sudo systemctl restart sshd
 sudo dnf install -y ansible-core  2>&1 | tee -a /var/log/user_data.log
 
 # install setup 
-ansible-pull -i localhost, -U https://github.com/manupanand-freelance-developer/learn-devops-project-infra  tools-infra/ansible/playbook.yaml  -e ansible_user=${AWS_USER} -e ansible_password=${AWS_PASSWORD} -e role_name=${role_name} 2>&1 | tee -a /var/log/user_data.log
+ANSIBLE_HOST_KEY_CHECKING=False ansible-pull -i localhost, -U https://github.com/manupanand-freelance-developer/learn-devops-project-infra  tools-infra/ansible/setup.yml  -e ansible_user=${AWS_USER} -e ansible_password=${AWS_PASSWORD} -e role_name=${role_name} 2>&1 | tee -a /var/log/user_data.log
