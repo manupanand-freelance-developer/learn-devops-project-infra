@@ -10,5 +10,6 @@ module "infra" {
     ports               =   each.value["ports"]
     aws_user            =   var.aws_user
     aws_password        =   var.aws_password 
+    domain-name         =   var.domain-name
 }
  

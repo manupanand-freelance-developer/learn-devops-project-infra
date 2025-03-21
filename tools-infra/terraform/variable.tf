@@ -32,7 +32,7 @@ variable "tools" {
     }
     # vault={
     #     instance_type=""
-    #     ports={}
+    #     ports={ vault= 8200}
     #     policy_name=[""]
     #     create_dns= true 
     #     volume_size=

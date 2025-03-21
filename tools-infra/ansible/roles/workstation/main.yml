@@ -1,0 +1,76 @@
+- name: Setting up Prompt
+  ansible.builtin.lineinfile: 
+    path:  "/hom/ec2-user/.bashrc"
+    line: 'export PS1="\[\e[1;31m\]\u\[\e[0m\]@\[\e[1;34m\]{{role_name}}\[\e[0m\] \w \$ "'
+    create: yes 
+    mode: '0644'
+
+- name: Source bash rc 
+  ansible.builtin.shell: |
+      source  ~/.bashrc
+  args: 
+    executable: /bin/bash     
+
+- name: Install amzon ssm 
+  ansible.builtin.shell: | 
+    yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_arm64/amazon-ssm-agent.rpm
+
+# also attach awsssmmanagedinstancecore iam role
+
+- name: Install Ansible 
+  ansible.builtin.dnf: 
+     name: ansible-core.aarch64
+     state: installed 
+
+- name: Install utils and dependencies 
+  ansible.builtin.dnf: 
+    name: 
+      - yum-utils 
+    state: installed 
+
+- name: Add hashicorp repo 
+  ansible.builtin.get_url: 
+    url: https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+    dest: /etc/yum.repos.d/hashicorp.repo
+
+- name: Install terraform 
+  ansible.buitlin.dnf: 
+     name: terraform
+     state: installed 
+
+
+- name: Intal gh-cli
+  ansible.builtin.dnf: https://github.com/cli/cli/releases/download/v2.68.1/gh_2.68.1_linux_arm64.rpm 
+
+
+- name: Install docker 
+  ansible.builtin.dnf: 
+     name: docker.aarch64
+     state: installed
+
+- name: Start docker service 
+  ansible.builtin.systemd_service:
+     state: restarted 
+  enabled: true
+
+- name: Download Kubectl 
+  ansible.builtin.get_url: 
+    url: https://s3.us-west-2.amazonaws.com/amazon-eks/1.32.0/2024-12-20/bin/linux/arm64/kubectl
+    dest: /usr/local/bin/kubectl
+    mode: '0755'
+
+
+- name: Install eksctl 
+  ansible.builtin.unarchive: 
+    src: https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_Linux_arm64.tar.gz
+    dest: /usr/local/bin/eksctl
+    mode: '0755'
+  
+
+- name: Install K9s
+  ansible.builtin.dnf : https://github.com/derailed/k9s/releases/download/v0.40.10/k9s_linux_arm64.rpm
+
+# sudo dnf install https://github.com/derailed/k9s/releases/download/v0.40.10/k9s_linux_arm64.rpm
+
+
+# install trivy
