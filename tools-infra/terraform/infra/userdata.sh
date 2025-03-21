@@ -10,7 +10,10 @@ sudo sed -i 's/^ChallengeResponseAuthentication no/ChallengeResponseAuthenticati
 
 
 # Ensure UsePAM is enabled
-echo "UsePAM yes" | sudo tee -a /etc/ssh/sshd_config
+echo "UsePAM yes" | sudo tee -a /etc/ssh/sshd_config 
+
+sudo systemctl restart daemon-reload
+sudo systemctl restart sshd
 
 # install ansible core
 sudo dnf install -y ansible-core.aarch64  2>&1 | tee -a /var/log/user_data.log
