@@ -108,6 +108,12 @@
 #gh -auth refresh -h github.com -s admin:org
 #multi line commads use | or > after key
 
+# install libicu 
+- name: Install libicu 
+  ansible.builtin.dnf: 
+    name: libicu 
+    state: present
+
 # grab token
 - name: Grab token 
   ansible.builtin.shell: |
