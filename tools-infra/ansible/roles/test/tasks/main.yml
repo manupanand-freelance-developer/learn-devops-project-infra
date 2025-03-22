@@ -76,6 +76,10 @@
 # install trivy
 
 # install  gh cli runner requirements
+- name: Adding grunner group 
+  ansible.builtin.group: 
+    name: grunner 
+    state: present
 
 - name: Adding User grunner 
   ansible.builtin.user: 
