@@ -4,7 +4,7 @@ on:
 
 jobs: 
    TEST:
-     runs-on: X64
+     runs-on: ARM64
      steps:  
      - name: Hashicorp vault checkout
        uses: hashicorp/vault-action@v2.4.0
