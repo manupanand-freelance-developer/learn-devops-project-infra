@@ -14,12 +14,6 @@
 - name: Install amzon ssm 
   ansible.builtin.shell: yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_arm64/amazon-ssm-agent.rpm
 
-
-- name: Start amazon ssm agent
-  ansible.builtin.systemd_service: 
-     name: amazon-ssm-agent
-     state: restarted
-     enabled: true
 # also attach awsssmmanagedinstancecore iam role
 
 - name: Install Ansible 
@@ -74,20 +68,9 @@
     remote_src: yes
   
 
-- name: Install K9s
-  ansible.builtin.shell: dnf install -y  https://github.com/derailed/k9s/releases/download/v0.40.10/k9s_linux_arm64.rpm
-  when: role_name == "workstation"
-     
+
+
+# sudo dnf install https://github.com/derailed/k9s/releases/download/v0.40.10/k9s_linux_arm64.rpm
+
 
 # install trivy
-- name: Copy trivy repo
-  ansible.builtin.template: 
-     src: trivy.repo
-     dest: /etc/yum.repos.d/trivy.repo 
-  when: role_name == "workstation"
-
-- name: Install trivy 
-  ansible.builtin.dnf: 
-     name: trivy 
-     state: present
-  when: role_name == "workstation"
