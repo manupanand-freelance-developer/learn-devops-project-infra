@@ -133,10 +133,10 @@
   args: 
     chdir: /action-runner 
   become_user: grunner 
-  when: runner_count.stdout == "0" or runner_status.stdout=="offline" or runner_count < "2"
+  when: runner_count.stdout == "0" or runner_status.stdout=="offline" or (runner_count.stdout | int) | lt(2)
     
 - name: Start runner service  
   ansible.builtin.shell:  ./svc.sh install grunner ; ./svc.sh start
   args: 
     chdir: /action-runner 
-  when: runner_count.stdout == "0" or runner_status.stdout=="offline" or runner_count < "2"
+  when: runner_count.stdout == "0" or runner_status.stdout=="offline" or (runner_count.stdout | int) | lt(2)
