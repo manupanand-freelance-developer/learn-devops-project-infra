@@ -17,17 +17,22 @@ jobs:
          #   # tools/data/aws vault_token |VAULT_TOKEN
         # tools is secretengine-check api 
       - uses: actions/checkout@v4
-      - name: Destroying infra Please wait
+      - name: Destroy infra  
       # export TF_VAR_vault_token=${{secrets.VAULT_TOKEN}}
         run: |
             BASE_DIR="/actions-runner/_work/learn-devops-project-infra/learn-devops-project-infra"
-            echo "Destroying infrastructure "
-            cd "$BASE_DIR/tools-infra/terraform"      # Always reset to the correct directory
-            pwd
-            ls -la 
-            terraform init;terraform destroy -auto-approve
-            cd - > /dev/null                       # Move back to the original working directory
-        
+            for role in "test" "test_x86"; do
+                echo "Destroying infrastructure for $role"
+                export TF_VAR_role_name="$role"
+                ls -la 
+                cd "$BASE_DIR/tools-infra/terraform"      # Always reset to the correct directory
+                pwd
+                ls -la 
+                echo $role
+                
+                terraform init;terraform destroy -auto-approve
+                cd - > /dev/null                       # Move back to the original working directory
+            done
         env: 
           TF_VAR_aws_password: ${{env.aws_password}}
           TF_VAR_aws_user: ${{env.aws_user}}
