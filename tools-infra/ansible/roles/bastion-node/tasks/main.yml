@@ -28,17 +28,17 @@
      state: installed 
 
 - name: Install utils and dependencies 
-  ansible.builtin.dnf: 
+  ansible.builtin.yum: 
     name: 
       - yum-utils 
       - rsyslog
-    state: installed 
+    state: present
 
-- name: Start rsyslog
+- name: Start rsyslog service
   ansible.builtin.systemd_service:  
      name: rsyslog 
      state: restarted 
-  enabled: true
+     enabled: true
 
 - name: Add hashicorp repo 
   ansible.builtin.get_url: 
