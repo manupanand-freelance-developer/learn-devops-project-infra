@@ -4,7 +4,6 @@ on:
 jobs:
   DEV: 
     runs-on: X64
-
     steps:
       - name: Import secrets from HashiCorp Vault
         uses: hashicorp/vault-action@v2.4.0
@@ -21,8 +20,4 @@ jobs:
           TF_VAR_aws_user: ${{ secrets.AWS_USER }}
           TF_VAR_aws_password: ${{ secrets.AWS_PASSWORD }}
 
-      
-      - name: Destroy multiple roles
-        run: |
-           echo destroy
-         
+   
