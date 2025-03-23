@@ -1,9 +1,11 @@
 name: Infrastructure destroy pipeline
 on: 
   workflow_dispatch:
+
 jobs:
   DEV: 
     runs-on: X64
+
     steps:
       - name: Import secrets from HashiCorp Vault
         uses: hashicorp/vault-action@v2.4.0
@@ -11,12 +13,12 @@ jobs:
           url: ${{ secrets.VAULT_SERVER }}
           token: ${{ secrets.VAULT_TOKEN }}
           tlsSkipVerify: true  # Add to runner later /usr/local/share/ca-certificates/vault-ca.crt
-          secrets: | 
-            tools/data/aws aws_user | AWS_USER   
+          secrets: |
+            tools/data/aws aws_user | AWS_USER
             tools/data/aws aws_password | AWS_PASSWORD
+
       - name: Destroy infra
         env: 
-          TF_VAR_aws_user: ${{ secrets.AWS_USER }}
-          TF_VAR_aws_password: ${{ secrets.AWS_PASSWORD }}
+          TF_VAR_aws_user: ${{ env.AWS_USER }}
+          TF_VAR_aws_password: ${{ env.AWS_PASSWORD }}
         run: ls -la
-   
