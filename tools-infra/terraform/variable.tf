@@ -11,7 +11,6 @@ variable "tools" {
         ports={https=443}
         policy_name=["AmazonEC2FullAccess",
                       "AmazonSSMFullAccess",
-                      "CloudWatchAgentServerPolicy",
                       "AmazonS3ReadOnlyAccess",
                       "AmazonVPCFullAccess",
                       "AmazonEKSClusterPolicy",
@@ -20,8 +19,6 @@ variable "tools" {
                       "AmazonEKS_CNI_Policy",
                       "IAMFullAccess",
                       "AutoScalingFullAccess",
-                      "AWSCloudFormationFullAccess",
-                      "AmazonEC2ContainerRegistryFullAccess"
                       ]
         volume_size= 25  
         create_dns= true 
@@ -32,7 +29,6 @@ variable "tools" {
         ports={https=443}
         policy_name=["AmazonEC2FullAccess",
                       "AmazonSSMFullAccess",
-                      "CloudWatchAgentServerPolicy",
                       "AmazonS3ReadOnlyAccess",
                       "AmazonVPCFullAccess",
                       "AmazonEKSClusterPolicy",
@@ -41,9 +37,7 @@ variable "tools" {
                       "AmazonEKS_CNI_Policy",
                       "IAMFullAccess",
                       "AutoScalingFullAccess",
-                      "AWSCloudFormationFullAccess",
-                      "AmazonEC2ContainerRegistryFullAccess"
-                      ]
+                       ]
         volume_size= 25 
         create_dns= true 
         create_iam_role=true 
