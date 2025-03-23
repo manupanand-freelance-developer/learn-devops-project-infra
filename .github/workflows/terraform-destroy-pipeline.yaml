@@ -30,7 +30,7 @@ jobs:
                 ls -la 
                 echo $role
                 
-                terraform destroy -auto-approve
+                terraform init;terraform destroy -auto-approve
                 cd - > /dev/null                       # Move back to the original working directory
             done
         env: 
