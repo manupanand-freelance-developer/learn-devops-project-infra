@@ -24,10 +24,5 @@ jobs:
       
       - name: Destroy multiple roles
         run: |
-          for role in "bastion-node" "grunner_arm"; do
-            echo "Destroying infrastructure for $role"
-            export TF_VAR_role_name="$role"
-            ls -la 
-            # cd tools-infra/terraform
-            # terraform destroy -auto-approve
-          done
+           echo destroy
+         
