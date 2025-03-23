@@ -13,6 +13,10 @@ git push origin main
             echo "Destroying infrastructure for $role"
             export TF_VAR_role_name="$role"
             ls -la 
-            # cd tools-infra/terraform
+            cd "$(pwd)/tools-infra/terraform"      # Always reset to the correct directory
+            ls -la 
+            echo $role
+            cd ..
             # terraform destroy -auto-approve
+            cd - > /dev/null                       # Move back to the original working directory
           done

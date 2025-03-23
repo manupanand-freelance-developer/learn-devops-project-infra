@@ -20,16 +20,7 @@ jobs:
       - name: run terraform 
       # export TF_VAR_vault_token=${{secrets.VAULT_TOKEN}}
         run: |
-          for role in "bastion-node" "grunner_arm"; do
-            echo "Destroying infrastructure for $role"
-            export TF_VAR_role_name="$role"
-            ls -la 
-            cd tools-infra/terraform
-            ls -la 
-            echo $role
-            cd ..
-            # terraform destroy -auto-approve
-          done
+          pwd
         env: 
           TF_VAR_aws_password: ${{env.aws_password}}
           TF_VAR_aws_user: ${{env.aws_user}}
