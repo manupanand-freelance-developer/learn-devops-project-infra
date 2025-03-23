@@ -22,12 +22,11 @@ jobs:
         run: |
           chmod +x tools-infra/terraform/infra/userdata.sh
           cd tools-infra; cd terraform
-          cat  infra/userdata.sh
           terraform init  ; terraform apply -auto-approve
         env:
             TF_VAR_aws_user: ${{env.AWS_USER}}
             TF_VAR_aws_password: ${{env.AWS_PASSWORD}}
-            TF_VAR_role_name: "workstation"
+            # TF_VAR_role_name: "workstation"
       
      
            
