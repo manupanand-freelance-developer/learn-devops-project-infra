@@ -17,21 +17,21 @@ jobs:
             tools/data/aws aws_password |AWS_PASSWORD 
       - name: Destroying the Infrastructure
         env: 
-            TF_VAR_aws_user: ${{secrets.AWS_USER}}
-            TF_VAR_aws_password: ${{secrets.AWS_PASSWORD}}
+          TF_VAR_aws_user: ${{secrets.AWS_USER}}
+          TF_VAR_aws_password: ${{secrets.AWS_PASSWORD}}
            
       - name: Destroy role 1
         env: 
-            TF_VAR_role_name: "bastion-node" 
+          TF_VAR_role_name: "bastion-node" 
         run: |
-          ls -la 
- #          cd tools-infra ; cd  terraform ; terraform destroy -auto-approve
+          ls -la ; env
+ #          cd tools-infra/terraform ; terraform destroy -auto-approve
       - name: Destroy role 2
         env: 
-              TF_VAR_role_name: "grunner_arm" 
+          TF_VAR_role_name: "grunner_arm" 
         run: |
-            ls -la 
- #           cd tools-infra ; cd  terraform ; terraform destroy -auto-approve
+            ls -la ; env
+ #           cd tools-infra/terraform ; terraform destroy -auto-approve
           
           
 
