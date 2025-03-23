@@ -15,10 +15,10 @@ jobs:
             tools/data/aws aws_user | AWS_USER   
             tools/data/aws aws_password | AWS_PASSWORD
 
-      - name: Destroying the Infrastructure
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - name: test
         env: 
           TF_VAR_aws_user: ${{ secrets.AWS_USER }}
           TF_VAR_aws_password: ${{ secrets.AWS_PASSWORD }}
-
+        run: ls -la
    
