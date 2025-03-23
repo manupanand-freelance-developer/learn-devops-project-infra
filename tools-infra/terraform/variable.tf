@@ -51,7 +51,7 @@ variable "tools" {
     #     create_iam_role=true 
     # }
     test={
-        instance_type="t3.small"  #c7g.medium(1/2) c7g.xlarge  t4g.xlarge  t4g.micro
+        instance_type="t4g.micro"  #c7g.medium(1/2) c7g.xlarge  t4g.xlarge  t4g.micro
         ports={https=443}
         policy_name=["AmazonEC2FullAccess","AmazonSSMFullAccess"]
         volume_size= 10  
@@ -59,7 +59,7 @@ variable "tools" {
         create_iam_role=true 
     }
       test_x86={
-        instance_type="t3.small"  #intel
+        instance_type="t4g.micro"  #intel
         ports={https=443}
         policy_name=["AmazonEC2FullAccess","AmazonSSMFullAccess"]
         volume_size= 10  
