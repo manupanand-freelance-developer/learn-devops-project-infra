@@ -27,6 +27,7 @@ jobs:
             cd tools-infra/terraform
             ls -la 
             echo $role
+            cd ..
             # terraform destroy -auto-approve
           done
         env: 
