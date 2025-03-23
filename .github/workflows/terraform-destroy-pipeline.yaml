@@ -14,6 +14,7 @@ jobs:
           secrets: | 
             tools/data/aws aws_user | AWS_USER   
             tools/data/aws aws_password | AWS_PASSWORD
+      - name: Destroy infra
         env: 
           TF_VAR_aws_user: ${{ secrets.AWS_USER }}
           TF_VAR_aws_password: ${{ secrets.AWS_PASSWORD }}
