@@ -21,3 +21,6 @@ jobs:
       # export TF_VAR_vault_token=${{secrets.VAULT_TOKEN}}
         run: |
           ls -la
+        env: 
+          TF_VAR_aws_password: ${{env.aws_password}}
+          TF_VAR_aws_user: ${{env.aws_user}}
