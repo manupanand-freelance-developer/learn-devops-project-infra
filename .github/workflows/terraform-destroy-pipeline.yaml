@@ -21,7 +21,7 @@ jobs:
       # export TF_VAR_vault_token=${{secrets.VAULT_TOKEN}}
         run: |
             BASE_DIR="/actions-runner/_work/learn-devops-project-infra/learn-devops-project-infra"
-            for role in "bastion-node" "grunner_arm"; do
+            for role in "test" "test_x86"; do
                 echo "Destroying infrastructure for $role"
                 export TF_VAR_role_name="$role"
                 ls -la 
@@ -30,7 +30,7 @@ jobs:
                 ls -la 
                 echo $role
                 cd ..
-                # terraform destroy -auto-approve
+                terraform destroy -auto-approve
                 cd - > /dev/null                       # Move back to the original working directory
             done
         env: 

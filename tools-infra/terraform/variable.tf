@@ -6,42 +6,42 @@ variable "route53-zoneid" {
 }
 variable "tools" {
   default = {
-    bastion-node={
-        instance_type="t4g.large"  #t4g.micro  t4g.xlarge(4/16) t4g.large(2/8)
-        ports={https=443}
-        policy_name=["AmazonEC2FullAccess",
-                      "AmazonSSMFullAccess",
-                      "AmazonS3ReadOnlyAccess",
-                      "AmazonVPCFullAccess",
-                      "AmazonEKSClusterPolicy",
-                      "AmazonEKSServicePolicy",
-                      "AmazonEKSWorkerNodePolicy",
-                      "AmazonEKS_CNI_Policy",
-                      "IAMFullAccess",
-                      "AutoScalingFullAccess",
-                      ]
-        volume_size= 25  
-        create_dns= true 
-        create_iam_role=true 
-    }
-    grunner_arm={
-        instance_type="t4g.xlarge"  #c7g.xlarge(4/8)  t4g.xlarge(4/16)
-        ports={https=443}
-        policy_name=["AmazonEC2FullAccess",
-                      "AmazonSSMFullAccess",
-                      "AmazonS3ReadOnlyAccess",
-                      "AmazonVPCFullAccess",
-                      "AmazonEKSClusterPolicy",
-                      "AmazonEKSServicePolicy",
-                      "AmazonEKSWorkerNodePolicy",
-                      "AmazonEKS_CNI_Policy",
-                      "IAMFullAccess",
-                      "AutoScalingFullAccess",
-                       ]
-        volume_size= 25 
-        create_dns= true 
-        create_iam_role=true 
-    }
+    # bastion-node={
+    #     instance_type="t4g.large"  #t4g.micro  t4g.xlarge(4/16) t4g.large(2/8)
+    #     ports={https=443}
+    #     policy_name=["AmazonEC2FullAccess",
+    #                   "AmazonSSMFullAccess",
+    #                   "AmazonS3ReadOnlyAccess",
+    #                   "AmazonVPCFullAccess",
+    #                   "AmazonEKSClusterPolicy",
+    #                   "AmazonEKSServicePolicy",
+    #                   "AmazonEKSWorkerNodePolicy",
+    #                   "AmazonEKS_CNI_Policy",
+    #                   "IAMFullAccess",
+    #                   "AutoScalingFullAccess",
+    #                   ]
+    #     volume_size= 25  
+    #     create_dns= true 
+    #     create_iam_role=true 
+    # }
+    # grunner_arm={
+    #     instance_type="t4g.xlarge"  #c7g.xlarge(4/8)  t4g.xlarge(4/16)
+    #     ports={https=443}
+    #     policy_name=["AmazonEC2FullAccess",
+    #                   "AmazonSSMFullAccess",
+    #                   "AmazonS3ReadOnlyAccess",
+    #                   "AmazonVPCFullAccess",
+    #                   "AmazonEKSClusterPolicy",
+    #                   "AmazonEKSServicePolicy",
+    #                   "AmazonEKSWorkerNodePolicy",
+    #                   "AmazonEKS_CNI_Policy",
+    #                   "IAMFullAccess",
+    #                   "AutoScalingFullAccess",
+    #                    ]
+    #     volume_size= 25 
+    #     create_dns= true 
+    #     create_iam_role=true 
+    # }
     # grunner_x86={
     #     instance_type="c6i.xlarge"  #c6i.xlarge(4/8)   m6i.xlarge (4/16)
     #     ports={https=443}
@@ -50,22 +50,22 @@ variable "tools" {
     #     create_dns= true 
     #     create_iam_role=true 
     # }
-    # test={
-    #     instance_type="t4g.micro"  #c7g.medium(1/2) c7g.xlarge  t4g.xlarge  t4g.micro
-    #     ports={https=443}
-    #     policy_name=["AmazonEC2FullAccess","AmazonSSMFullAccess"]
-    #     volume_size= 10  
-    #     create_dns= true 
-    #     create_iam_role=true 
-    # }
-    #   test_x86={
-    #     instance_type="t3.small"  #intel
-    #     ports={https=443}
-    #     policy_name=["AmazonEC2FullAccess","AmazonSSMFullAccess"]
-    #     volume_size= 10  
-    #     create_dns= true 
-    #     create_iam_role=true 
-    # }
+    test={
+        instance_type="t3.small"  #c7g.medium(1/2) c7g.xlarge  t4g.xlarge  t4g.micro
+        ports={https=443}
+        policy_name=["AmazonEC2FullAccess","AmazonSSMFullAccess"]
+        volume_size= 10  
+        create_dns= true 
+        create_iam_role=true 
+    }
+      test_x86={
+        instance_type="t3.small"  #intel
+        ports={https=443}
+        policy_name=["AmazonEC2FullAccess","AmazonSSMFullAccess"]
+        volume_size= 10  
+        create_dns= true 
+        create_iam_role=true 
+    }
     # vault={
     #     instance_type=""
     #     ports={ vault= 8200}
