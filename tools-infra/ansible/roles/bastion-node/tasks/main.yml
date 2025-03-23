@@ -31,7 +31,14 @@
   ansible.builtin.dnf: 
     name: 
       - yum-utils 
+      - rsyslog
     state: installed 
+
+- name: Start rsyslog
+  ansible.builtin.systemd_service:  
+     name: rsyslog 
+     state: restarted 
+  enabled: true
 
 - name: Add hashicorp repo 
   ansible.builtin.get_url: 
@@ -76,18 +83,17 @@
 
 - name: Install K9s
   ansible.builtin.shell: dnf install -y  https://github.com/derailed/k9s/releases/download/v0.40.10/k9s_linux_arm64.rpm
-  when: role_name == "workstation"
-     
+  
 
 # install trivy
 - name: Copy trivy repo
   ansible.builtin.template: 
      src: trivy.repo
      dest: /etc/yum.repos.d/trivy.repo 
-  when: role_name == "workstation"
+  
 
 - name: Install trivy 
   ansible.builtin.dnf: 
      name: trivy 
      state: present
-  when: role_name == "workstation"
+ 

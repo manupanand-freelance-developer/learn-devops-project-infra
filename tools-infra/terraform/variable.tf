@@ -6,10 +6,23 @@ variable "route53-zoneid" {
 }
 variable "tools" {
   default = {
-    workstation={
+    bastion-node={
         instance_type="t4g.large"  #t4g.micro  t4g.xlarge(4/16) t4g.large(2/8)
         ports={https=443}
-        policy_name=["AmazonEC2FullAccess","AmazonSSMFullAccess","AmazonECRFullAccess","CloudWatchAgentServerPolicy","IAMPassRole","AmazonS3ReadOnlyAccess"]
+        policy_name=["AmazonEC2FullAccess",
+                      "AmazonSSMFullAccess",
+                      "CloudWatchAgentServerPolicy",
+                      "AmazonS3ReadOnlyAccess",
+                      "AmazonVPCFullAccess",
+                      "AmazonEKSClusterPolicy",
+                      "AmazonEKSServicePolicy",
+                      "AmazonEKSWorkerNodePolicy",
+                      "AmazonEKS_CNI_Policy",
+                      "IAMFullAccess",
+                      "AutoScalingFullAccess",
+                      "AWSCloudFormationFullAccess",
+                      "AmazonEC2ContainerRegistryFullAccess"
+                      ]
         volume_size= 25  
         create_dns= true 
         create_iam_role=true 
@@ -17,7 +30,20 @@ variable "tools" {
     grunner_arm={
         instance_type="t4g.xlarge"  #c7g.xlarge(4/8)  t4g.xlarge(4/16)
         ports={https=443}
-        policy_name=["AmazonEC2FullAccess","AmazonSSMFullAccess","AmazonECRFullAccess","CloudWatchAgentServerPolicy","IAMPassRole","AmazonS3ReadOnlyAccess" ]
+        policy_name=["AmazonEC2FullAccess",
+                      "AmazonSSMFullAccess",
+                      "CloudWatchAgentServerPolicy",
+                      "AmazonS3ReadOnlyAccess",
+                      "AmazonVPCFullAccess",
+                      "AmazonEKSClusterPolicy",
+                      "AmazonEKSServicePolicy",
+                      "AmazonEKSWorkerNodePolicy",
+                      "AmazonEKS_CNI_Policy",
+                      "IAMFullAccess",
+                      "AutoScalingFullAccess",
+                      "AWSCloudFormationFullAccess",
+                      "AmazonEC2ContainerRegistryFullAccess"
+                      ]
         volume_size= 25 
         create_dns= true 
         create_iam_role=true 
