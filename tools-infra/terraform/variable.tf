@@ -129,3 +129,7 @@ variable "aws_password" {
 variable "role_name" {
   
 }
+
+output "test" {
+  value=var.tools
+}
